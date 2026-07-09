@@ -338,7 +338,7 @@
         </div>
 
         <div class="team-actions">
-            <form method="POST" action="#" id="team-form">
+            <form method="POST" action="{{ route('teams.store') }}" id="team-form">
                 @csrf
                 <input type="hidden" name="team_name" id="input-team-name">
                 <input type="hidden" name="pokemon_ids" id="input-pokemon-ids">

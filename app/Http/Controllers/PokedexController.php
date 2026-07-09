@@ -2,35 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Pokemon;
 
 class PokedexController extends Controller
 {
     public function index()
     {
-        $pokemon = [
-            [
-                'name' => 'Pikachu',
-                'type' => 'Electric',
-                'hp' => 35,
-                'attack' => 55,
-                'speed' => 90
-            ],
-            [
-                'name' => 'Charizard',
-                'type' => 'Fire/Flying',
-                'hp' => 78,
-                'attack' => 84,
-                'speed' => 100
-            ],
-            [
-                'name' => 'Bulbasaur',
-                'type' => 'Grass/Poison',
-                'hp' => 45,
-                'attack' => 49,
-                'speed' => 45
-            ]
-        ];
+        $pokemon = Pokemon::orderBy('pokemon_id')->get()->map(function ($p) {
+            return [
+                'id'        => $p->pokemon_id,
+                'name'      => $p->name,
+                'type'      => $p->type1,
+                'types'     => array_filter([$p->type1, $p->type2]),
+                'hp'        => $p->hp,
+                'attack'    => $p->attack,
+                'defense'   => $p->defense,
+                'speed'     => $p->speed,
+                'sprite'    => $p->sprite_url ?? '?',
+                'sprite_url'=> $p->sprite_url,
+            ];
+        })->toArray();
 
         return view('pokedex', compact('pokemon'));
     }
