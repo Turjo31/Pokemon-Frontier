@@ -179,26 +179,28 @@ app/
 │   ├── MatchResult.php
 │   └── Ranking.php
 database/
-├── sql/
-│   ├── schema.sql
-│   └── seed_pokemon.sql
+└── sql/
+    ├── schema.sql
+    └── seed_pokemon.sql
 resources/
 └── views/
-├── layouts/
-│   └── app.blade.php
-├── auth/
-│   ├── login.blade.php
-│   ├── register.blade.php
-│   └── admin-login.blade.php
-├── admin/
-│   ├── pokemon.blade.php
-│   └── leagues.blade.php
-├── welcome.blade.php
-├── dashboard.blade.php
-├── pokedex.blade.php
-├── teams.blade.php
-├── tournaments.blade.php
-└── leaderboard.blade.php
+    ├── layouts/
+    │   └── app.blade.php
+    ├── auth/
+    │   ├── login.blade.php
+    │   ├── register.blade.php
+    │   └── admin-login.blade.php
+    ├── admin/
+    │   ├── pokemon.blade.php
+    │   └── leagues.blade.php
+    ├── welcome.blade.php
+    ├── dashboard.blade.php
+    ├── pokedex.blade.php
+    ├── teams.blade.php
+    ├── tournaments.blade.php
+    └── leaderboard.blade.php
+routes/
+└── web.php
 
 ## License
 
