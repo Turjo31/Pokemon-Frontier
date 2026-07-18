@@ -146,61 +146,7 @@ Visit `http://localhost:8000`
 | `/admin/pokemon` | Manage Pokédex |
 | `/admin/leagues` | Manage leagues and tournaments |
 
-## Project Structure
 
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Auth/
-│   │   │   ├── LoginController.php
-│   │   │   ├── RegisterController.php
-│   │   │   └── AdminLoginController.php
-│   │   ├── Admin/
-│   │   │   ├── AdminPokemonController.php
-│   │   │   └── AdminLeagueController.php
-│   │   ├── DashboardController.php
-│   │   ├── PokedexController.php
-│   │   ├── TeamController.php
-│   │   ├── TournamentController.php
-│   │   ├── LeaderboardController.php
-│   │   └── WelcomeController.php
-│   └── Middleware/
-│       ├── TrainerAuth.php
-│       └── AdminAuth.php
-├── Models/
-│   ├── Pokemon.php
-│   ├── Trainer.php
-│   ├── Admin.php
-│   ├── Team.php
-│   ├── TeamPokemon.php
-│   ├── League.php
-│   ├── Tournament.php
-│   ├── Registration.php
-│   ├── MatchResult.php
-│   └── Ranking.php
-database/
-└── sql/
-    ├── schema.sql
-    └── seed_pokemon.sql
-resources/
-└── views/
-    ├── layouts/
-    │   └── app.blade.php
-    ├── auth/
-    │   ├── login.blade.php
-    │   ├── register.blade.php
-    │   └── admin-login.blade.php
-    ├── admin/
-    │   ├── pokemon.blade.php
-    │   └── leagues.blade.php
-    ├── welcome.blade.php
-    ├── dashboard.blade.php
-    ├── pokedex.blade.php
-    ├── teams.blade.php
-    ├── tournaments.blade.php
-    └── leaderboard.blade.php
-routes/
-└── web.php
 
 ## License
 
