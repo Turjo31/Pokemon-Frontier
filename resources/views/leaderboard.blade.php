@@ -369,6 +369,8 @@
                 <span style="text-align:right">Points</span>
             </div>
 
+            @php $colors = ['#7c3aed','#0284c7','#15803d','#e8372a','#b45309','#0f766e']; @endphp
+            
             @forelse($rankings ?? [] as $i => $r)
                 @php
                     $rankClass = match($i) { 0=>'gold', 1=>'silver', 2=>'bronze', default=>'' };

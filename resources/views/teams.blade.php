@@ -645,7 +645,41 @@
         </div>
 
     </div>
-
+    @if(count($teams) > 0)
+        <div style="margin-top:28px">
+            <div style="font-family:var(--display);font-size:24px;letter-spacing:1px;margin-bottom:14px">My <span
+                    style="color:var(--accent)">Teams</span></div>
+            @foreach($teams as $team)
+                <div
+                    style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:10px">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                        <div style="font-family:var(--display);font-size:18px;letter-spacing:1px">{{ $team->team_name }}</div>
+                        <form method="POST" action="{{ route('teams.destroy', $team->team_id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                style="background:none;border:1px solid rgba(232,55,42,0.3);color:#ff7c72;border-radius:7px;padding:4px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--body)"
+                                onclick="return confirm('Delete this team?')">Delete</button>
+                        </form>
+                    </div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap">
+                        @foreach($team->pokemon as $p)
+                            <div
+                                style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:12px;font-weight:500">
+                                {{ $p->name }}
+                                <span
+                                    style="font-size:10px;color:var(--muted);margin-left:4px">{{ $p->hp + $p->attack + $p->defense + $p->speed }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div style="margin-top:10px;font-size:11px;color:var(--muted)">
+                        Total power: <span
+                            style="color:var(--accent2);font-family:var(--display);font-size:14px">{{ $team->total_power }}</span>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
     <div class="toast" id="toast"></div>
 
     @push('scripts')
@@ -688,13 +722,13 @@
                     if (team[i]) {
                         const p = team[i];
                         slot.innerHTML = `
-                        <span class="slot-sprite">${p.sprite}</span>
-                        <div class="slot-info">
-                            <div class="slot-name">${p.name}</div>
-                            <div class="slot-power">Power: ${p.power}</div>
-                        </div>
-                        <button class="slot-remove" onclick="removePoke('${p.id}')" title="Remove">×</button>
-                    `;
+                    <span class="slot-sprite" style="font-size:13px">${p.name}</span>
+                                        <div class="slot-info">
+                                            <div class="slot-name">${p.name}</div>
+                                            <div class="slot-power">Power: ${p.power}</div>
+                                        </div>
+                                        <button class="slot-remove" onclick="removePoke('${p.id}')" title="Remove">×</button>
+                                    `;
                     } else {
                         slot.innerHTML = `<span class="slot-empty-text">Empty slot</span>`;
                     }

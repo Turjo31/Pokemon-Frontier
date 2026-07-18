@@ -9,7 +9,7 @@ use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\Admin\AdminPokemonController;
 use App\Http\Controllers\Admin\AdminLeagueController;
 
-Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
 
 // Auth
 Route::get('/login',    [App\Http\Controllers\Auth\LoginController::class,    'showForm'])->name('login');

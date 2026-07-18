@@ -375,7 +375,7 @@
             <div class="modal-title" id="modal-title">Add Pokémon</div>
             <button class="modal-close" onclick="closeModal()">×</button>
         </div>
-        <form method="POST" id="pokemon-form" action="#">
+        <form method="POST" id="pokemon-form" action="{{ route('admin.pokemon.store') }}">
             @csrf
             <input type="hidden" name="_method" id="form-method" value="POST">
             <input type="hidden" name="pokemon_id" id="form-id">
@@ -483,7 +483,7 @@ function openAddModal() {
     document.getElementById('modal-title').textContent = 'Add Pokémon';
     document.getElementById('modal-save-btn').textContent = 'Add Pokémon';
     document.getElementById('form-method').value = 'POST';
-    document.getElementById('pokemon-form').action = '#';
+    document.getElementById('pokemon-form').action = "{{ route('admin.pokemon.store') }}";
     document.getElementById('form-id').value = '';
     ['name','hp','attack','defense','speed','sprite'].forEach(f => {
         const el = document.getElementById('form-' + f);
@@ -499,7 +499,7 @@ function openEditModal(p) {
     document.getElementById('modal-title').textContent = 'Edit Pokémon';
     document.getElementById('modal-save-btn').textContent = 'Save changes';
     document.getElementById('form-method').value = 'PUT';
-    document.getElementById('pokemon-form').action = '#';
+    document.getElementById('pokemon-form').action = `/admin/pokemon/${p.pokemon_id}`;
     document.getElementById('form-id').value    = p.pokemon_id;
     document.getElementById('form-name').value   = p.name || '';
     document.getElementById('form-type1').value  = (p.type1 || 'normal').toLowerCase();
@@ -519,7 +519,7 @@ function closeModal() {
 // ── Delete modal ──────────────────────────────────────────
 function openDeleteModal(id, name) {
     document.getElementById('delete-name').textContent = name;
-    document.getElementById('delete-form').action = '#';
+    document.getElementById('delete-form').action = `/admin/pokemon/${id}`;
     document.getElementById('delete-modal').classList.add('open');
 }
 

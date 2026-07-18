@@ -304,10 +304,6 @@
                 <span class="power-val">{{ $total }}</span>
             </div>
 
-            <div class="card-actions">
-                <a href="/teams/add/{{ $p['id'] ?? $loop->index }}" class="btn btn-primary">Add to team</a>
-                <a href="/pokedex/{{ $p['id'] ?? $loop->index }}" class="btn btn-ghost">Details</a>
-            </div>
         </div>
 
     @empty

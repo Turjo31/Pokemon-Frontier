@@ -463,7 +463,7 @@
                         </span>
                         <div class="item-actions">
                             @if(strtolower($t['status'] ?? '') === 'active')
-                                <form method="POST" action="#" style="display:inline">
+                                <form method="POST" action="{{ route('admin.tournaments.simulate', $t['id']) }}" style="display:inline">
                                     @csrf
                                     <input type="hidden" name="tournament_id" value="{{ $t['id'] }}">
                                     <button type="submit" class="btn-simulate">⚡ Simulate round</button>
@@ -542,7 +542,7 @@
             </div>
             <form method="POST" action="{{ route('admin.tournaments.store') }}" id="tournament-form">
                 @csrf
-
+                <input type="hidden" name="_method" id="tournament-method" value="POST">
                 <input type="hidden" name="tournament_id" id="tournament-id">
                 <div class="modal-body">
                     <div class="field">
@@ -613,6 +613,7 @@
             function openEditTournament(t) {
                 document.getElementById('tournament-modal-title').textContent = 'Edit tournament';
                 document.getElementById('tournament-method').value = 'PUT';
+                document.getElementById('tournament-form').action = `/admin/tournaments/${t.tournament_id || t.id}`;
                 document.getElementById('tournament-id').value = t.tournament_id || t.id;
                 document.getElementById('tournament-name').value = t.name || '';
                 document.getElementById('tournament-league').value = t.league_id || '';

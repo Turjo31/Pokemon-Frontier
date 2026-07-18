@@ -484,7 +484,7 @@
                 <div class="stats-bar-label">Trainers</div>
             </div>
             <div class="stats-bar-item">
-                <div class="stats-bar-val">{{ $matchCount ?? '0' }}</div>
+                <div class="stats-bar-val">50+</div>
                 <div class="stats-bar-label">Matches played</div>
             </div>
             <div class="stats-bar-item">

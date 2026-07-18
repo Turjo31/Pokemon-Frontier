@@ -495,10 +495,13 @@
         </a>
 
         <div class="nav-links">
-            <a href="/pokedex" class="{{ request()->is('pokedex*') ? 'active' : '' }}">Pokédex</a>
-            <a href="/teams" class="{{ request()->is('teams*') ? 'active' : '' }}">My Teams</a>
-            <a href="/tournaments" class="{{ request()->is('tournaments*') ? 'active' : '' }}">Tournaments</a>
-            <a href="/leaderboard" class="{{ request()->is('leaderboard*') ? 'active' : '' }}">Leaderboard</a>
+            <a href="{{ route('pokedex') }}" class="{{ request()->is('pokedex*') ? 'active' : '' }}">Pokédex</a>
+            <a href="{{ route('teams.index') }}" class="{{ request()->is('teams*') ? 'active' : '' }}">My
+                Teams</a>
+            <a href="{{ route('tournaments.index') }}"
+                class="{{ request()->is('tournaments*') ? 'active' : '' }}">Tournaments</a>
+            <a href="{{ route('leaderboard') }}"
+                class="{{ request()->is('leaderboard*') ? 'active' : '' }}">Leaderboard</a>
         </div>
 
         <div class="nav-right">
@@ -507,6 +510,13 @@
                     <div class="trainer-avatar">{{ strtoupper(substr(auth('trainer')->user()->username, 0, 2)) }}</div>
                     {{ auth('trainer')->user()->username }}
                 </div>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline">
+                    @csrf
+                    <button type="submit"
+                        style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;font-family:var(--body);padding:6px 10px;border-radius:8px;transition:color 0.2s"
+                        onmouseover="this.style.color='var(--text)'"
+                        onmouseout="this.style.color='var(--muted)'">Logout</button>
+                </form>
             @else
                 <a href="{{ route('login') }}" class="btn btn-ghost" style="padding:6px 14px;font-size:12px">Log in</a>
                 <a href="{{ route('register') }}" class="btn btn-primary"

@@ -89,9 +89,6 @@ class AdminLeagueController extends Controller
     public function storeTournament(Request $request)
     {
 
-        
-
-
 
         $request->validate([
             'name' => 'required|string|max:100',
@@ -139,9 +136,10 @@ class AdminLeagueController extends Controller
     }
 
     public function simulate($id)
-    {
-        DB::statement('BEGIN run_tournament_round(:tid); END;', ['tid' => $id]);
-        return redirect()->route('admin.leagues.index')
-            ->with('success', 'Round simulated!');
-    }
+{
+    DB::statement('BEGIN create_tournament_matches(:tid); END;', ['tid' => $id]);
+    DB::statement('BEGIN run_tournament_round(:tid); END;', ['tid' => $id]);
+    return redirect()->route('admin.leagues.index')
+                     ->with('success', 'Round simulated!');
+}
 }

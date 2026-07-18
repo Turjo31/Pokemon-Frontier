@@ -405,7 +405,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <form method="POST" action="#" style="margin-top:8px">
+                        <form method="POST" action="{{ route('tournaments.register', $t['id']) }}" style="margin-top:8px">
                             @csrf
                             <input type="hidden" name="tournament_id" value="{{ $t['id'] ?? $i }}">
                             <input type="hidden" name="team_id" id="team-id-{{ $t['id'] ?? $i }}">
